@@ -54,6 +54,14 @@ app.get('/bad', function (req, res) {
     })
 });
 
+app.get('/projects', function (req, res) {
+    //res.send('<h1>Hello, Express!!</h1>');
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page',
+        welcomeMessage: 'Dis the projects page biatch',
+    })
+});
+
 app.listen(port, function () {
     console.log(`Server is up on ${port}.`);
 });
