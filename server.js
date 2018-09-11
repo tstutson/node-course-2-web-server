@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const request = require('request');
 
 const port = process.env.PORT || 3000;
 var app = express();
@@ -55,10 +56,44 @@ app.get('/bad', function (req, res) {
 });
 
 app.get('/projects', function (req, res) {
-    //res.send('<h1>Hello, Express!!</h1>');
     res.render('projects.hbs', {
         pageTitle: 'Projects Page',
         welcomeMessage: 'Dis the projects page biatch',
+    })
+});
+
+function bootstrapEmbeddedURL(req, res, next) {
+    if (!req.context) req.context = {};
+    var client_id = '5b97d600fd461e0017e4b4be';
+    var access_token = 'dFd-Xm-sm-q3iPwUfWXGbmvco~nUiS8eJIGG-muR5V4_';
+    var revision = '5b97d64bfd461e0017e4b4bf';
+
+    var embedded_editor_url = 'https://qa-api.pactsafe.com/v1.1/revisions/' + revision + '/embedded_url?state=something';
+
+    request.get({
+            url: embedded_editor_url,
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json'
+            }
+        },
+        function(err, response, body) {
+            if (err || !body) return next(err);
+            try {
+                body = JSON.parse(body);
+                req.context.embedded_url = body.data.location;
+            }
+            catch (ex) {
+                console.error(ex);
+            }
+            next();
+        });
+}
+
+app.get('/embedded', bootstrapEmbeddedURL, function (req, res) {
+    res.render('embedded.hbs', {
+        pageTitle: 'Embedded Page',
+        context: req.context
     })
 });
 

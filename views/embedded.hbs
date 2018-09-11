@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{pageTitle}}</title>
+    <script src="https://dev-vault.pactsafe.io/pactsafe-embed.js" type="text/javascript"></script>
+
+</head>
+<body>
+{{> header}}
+
+<script type="text/javascript">
+    var EmbeddedEditor = new PactSafeEmbedded('5b97d600fd461e0017e4b4be');
+    EmbeddedEditor.open({
+        url: '{{{context.embedded_url}}}',
+        allow_cancel: true,
+        debug: true,
+        // skip_domain_verification: true,
+        // height: 600,
+        from_top: 30,
+        from_left: 60,
+        message_listener: function(data) {
+            console.log(data);
+        }
+    });
+</script>
+
+{{> footer}}
+
+</body>
+</html>
