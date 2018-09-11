@@ -64,11 +64,11 @@ app.get('/projects', function (req, res) {
 
 function bootstrapEmbeddedURL(req, res, next) {
     if (!req.context) req.context = {};
-    var client_id = '5b97d600fd461e0017e4b4be';
-    var access_token = 'dFd-Xm-sm-q3iPwUfWXGbmvco~nUiS8eJIGG-muR5V4_';
-    var revision = '5b97d64bfd461e0017e4b4bf';
+    var client_id = '58dc305a75089c733ebc8487';
+    var access_token = 'WpkFloEPcFj3OWSAMCoebBYlchW0zA5Ie7XjPmQUBCo_';
+    var revision = '5b97d4e55ca9d91623837a86';
 
-    var embedded_editor_url = 'https://qa-api.pactsafe.com/v1.1/revisions/' + revision + '/embedded_url?state=something';
+    var embedded_editor_url = 'https://dev-api.pactsafe.com/v1.1/revisions/' + revision + '/embedded_url?state=something';
 
     request.get({
             url: embedded_editor_url,
