@@ -66,7 +66,7 @@ function bootstrapEmbeddedURL(req, res, next) {
     if (!req.context) req.context = {};
     var client_id = '58dc305a75089c733ebc8487';
     var access_token = 'WpkFloEPcFj3OWSAMCoebBYlchW0zA5Ie7XjPmQUBCo_';
-    var revision = '5b9a7657abc8dc0017d15e69';
+    var revision = '5b9ab5d764186a3f37429093';
 
     var embedded_editor_url = 'https://dev-api.pactsafe.com/v1.1/revisions/' + revision + '/embedded_url?state=something';
 
